@@ -76,13 +76,6 @@ let currentUser = null;
 document.addEventListener('DOMContentLoaded', function() {
     // Load cart from localStorage or initialize as an empty array
     let cart = JSON.parse(localStorage.getItem('beipoasCart')) || [];
-
-    // Load users from localStorage or initialize with a default user
-    let users = JSON.parse(localStorage.getItem('beipoasUsers'));
-    if (!users) {
-        users = [{ fullName: 'Test User', username: 'testuser', password: 'password123' }];
-        localStorage.setItem('beipoasUsers', JSON.stringify(users));
-    }
     const cartCount = document.querySelector('.cart-count');
     const cartButton = document.getElementById('cart-button');
     const cartModal = document.getElementById('cart-modal');
@@ -98,12 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const accountModal = document.getElementById('account-modal');
     const offersButton = document.getElementById('offers-button');
     const offersModal = document.getElementById('offers-modal');
-    const logoutBtn = document.getElementById('logout-btn');
     const loginModal = document.getElementById('login-modal');
-    const signupModal = document.getElementById('signup-modal');
     const togglePassword = document.getElementById('toggle-password');
     const passwordInput = document.getElementById('password');
-    const rememberMeCheckbox = document.getElementById('remember-me');
     const loginBtn = document.getElementById('login-btn');
     const searchInput = document.getElementById('search-input');
     const loginError = document.getElementById('login-error');
@@ -125,35 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const trackOrderModal = document.getElementById('track-order-modal');
     const trackOrderBtn = document.getElementById('track-order-btn');
     const backToTopBtn = document.getElementById('back-to-top-btn');
-    const signupLink = document.getElementById('signup-link');
-    const loginLink = document.getElementById('login-link');
-    const signupBtn = document.getElementById('signup-btn');
-    const forgotPasswordLink = document.getElementById('forgot-password-link');
-    const googleLoginBtn = document.getElementById('google-login-btn');
-    const emailLoginBtn = document.getElementById('email-login-btn');
-    const googleSigninModal = document.getElementById('google-signin-modal');
-    const googleDummyAccount = document.getElementById('google-dummy-account');
-    const emailSigninModal = document.getElementById('email-signin-modal');
-    const sendMagicLinkBtn = document.getElementById('send-magic-link-btn');
-    const magicLinkError = document.getElementById('magic-link-error');
-    const forgotPasswordModal = document.getElementById('forgot-password-modal');
-    const sendResetLinkBtn = document.getElementById('send-reset-link-btn');
-    const resetEmailError = document.getElementById('reset-email-error');
     let confirmCallback = null;
     
     // Initialize product displays
     displayFlashSalesProducts();
     displayFeaturedProducts();
     updateCart(); // Update cart on initial page load
-
-    // Check for remembered credentials on page load
-    const rememberedUsername = localStorage.getItem('rememberedUsername');
-    const rememberedPassword = localStorage.getItem('rememberedPassword');
-    if (rememberedUsername && rememberedPassword) {
-        document.getElementById('username').value = rememberedUsername;
-        document.getElementById('password').value = rememberedPassword;
-        rememberMeCheckbox.checked = true;
-    }
     
     // Add to cart buttons
     document.addEventListener('click', function(e) {
@@ -242,12 +209,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        if (cart.length > 0) {
-            cartModal.style.display = 'none';
-            mpesaModal.style.display = 'flex';
-        } else {
-            showNotification('Cart is Empty', 'Please add items to your cart to proceed.');
+        if (cart.length === 0) {
+            return;
         }
+        cartModal.style.display = 'none';
+        mpesaModal.style.display = 'flex';
     });
 
     // Update cart display
@@ -258,10 +224,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
         
         if (cart.length === 0) {
-            emptyCartMessage.textContent = 'Add items to your cart to proceed.';
             emptyCartMessage.style.display = 'block';
             cartItems.innerHTML = ''; // Clear the items visually
-            if (checkoutBtn) checkoutBtn.disabled = false; // Keep it enabled
+            if (checkoutBtn) checkoutBtn.disabled = true;
             if (clearCartBtn) clearCartBtn.disabled = true;
         } else {
             emptyCartMessage.style.display = 'none';
@@ -324,22 +289,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Logout functionality
-    logoutBtn.addEventListener('click', function() {
-        if (isLoggedIn) {
-            isLoggedIn = false;
-            const formerUser = currentUser.fullName;
-            currentUser = null;
-            accountModal.style.display = 'none';
-            accountButton.innerHTML = `<i class="fas fa-user"></i> Account`;
-            showToast(`You have been logged out. Goodbye, ${formerUser}!`);
-            console.log('User logged out.');
-        }
-    });
-
     // Shop Now button
     shopNowBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        heroSection.classList.add('burgundy-bg');
         // Scroll to products section
         document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
     });
@@ -401,191 +354,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
         
         loginError.style.display = 'none'; // Hide error on new attempt
-        
-        if (!username || !password) {
+
+        if (username && password) {
+            isLoggedIn = true;
+            currentUser = { username: username };
+            loginModal.style.display = 'none';
+            showToast(`Welcome back, ${username}!`);
+        } else {
             loginError.textContent = 'Please enter both username and password.';
             loginError.style.display = 'block';
-            return;
-        }
-
-        const user = users.find(u => u.username === username && u.password === password);
-
-        if (user) {
-            isLoggedIn = true;
-            currentUser = user;
-            loginModal.style.display = 'none';
-            accountButton.innerHTML = `<i class="fas fa-user"></i> ${user.fullName}`;
-
-            // Populate account profile tab
-            document.getElementById('full-name').value = user.fullName;
-            document.getElementById('email').value = user.username;
-            document.getElementById('phone').value = ''; // Clear phone as it's not stored
-
-            if (rememberMeCheckbox.checked) {
-                localStorage.setItem('rememberedUsername', username);
-                localStorage.setItem('rememberedPassword', password);
-            } else {
-                localStorage.removeItem('rememberedUsername');
-                localStorage.removeItem('rememberedPassword');
-            }
-            showToast(`Welcome back, ${user.fullName}!`);
-        } else {
-            loginError.textContent = 'Invalid username or password.';
-            loginError.style.display = 'block';
         }
     });
-
-    // Signup Modal Switching
-    signupLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginModal.style.display = 'none';
-        signupModal.style.display = 'flex';
-    });
-
-    loginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        signupModal.style.display = 'none';
-        loginModal.style.display = 'flex';
-    });
-
-    // Signup functionality
-    signupBtn.addEventListener('click', function() {
-        const fullName = document.getElementById('signup-fullname').value.trim();
-        const username = document.getElementById('signup-username').value.trim();
-        const password = document.getElementById('signup-password').value;
-        const confirmPassword = document.getElementById('signup-confirm-password').value;
-        const signupError = document.getElementById('signup-error');
-
-        signupError.style.display = 'none';
-
-        if (!fullName || !username || !password || !confirmPassword) {
-            signupError.textContent = 'Please fill out all fields.';
-            signupError.style.display = 'block';
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            signupError.textContent = 'Passwords do not match.';
-            signupError.style.display = 'block';
-            return;
-        }
-
-        if (users.some(user => user.username === username)) {
-            signupError.textContent = 'Username or email already exists.';
-            signupError.style.display = 'block';
-            return;
-        }
-
-        const newUser = { fullName, username, password };
-        users.push(newUser);
-        // Save updated users array to localStorage
-        localStorage.setItem('beipoasUsers', JSON.stringify(users));
-
-        console.log('New user registered:', newUser);
-        console.log('All users:', users);
-
-        signupModal.style.display = 'none';
-        showToast(`Welcome, ${fullName}! Your account has been created.`);
-        
-        // Automatically log in the new user
-        isLoggedIn = true;
-        currentUser = newUser;
-        accountButton.innerHTML = `<i class="fas fa-user"></i> ${newUser.fullName}`;
-
-        // Populate account profile tab
-        document.getElementById('full-name').value = newUser.fullName;
-        document.getElementById('email').value = newUser.username;
-        document.getElementById('phone').value = ''; // Clear phone as it's not stored
-    });
-
-    // "Forgot Password" link
-    forgotPasswordLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginModal.style.display = 'none';
-        forgotPasswordModal.style.display = 'flex';
-    });
-
-    // Social Login buttons
-    googleLoginBtn.addEventListener('click', () => {
-        loginModal.style.display = 'none';
-        googleSigninModal.style.display = 'flex';
-    });
-
-    googleDummyAccount.addEventListener('click', () => {
-        // In a real app, this would trigger the Google OAuth flow.
-        // For this demo, we'll simulate a successful login.
-        setTimeout(() => {
-            isLoggedIn = true;
-            currentUser = { fullName: 'Google User', username: 'googleuser' };
-            googleSigninModal.style.display = 'none';
-            accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.fullName}`;
-
-            // Populate account profile tab for Google user
-            document.getElementById('full-name').value = currentUser.fullName;
-            document.getElementById('email').value = 'google.user@example.com'; // Example email
-            document.getElementById('phone').value = ''; // Clear phone
-            showToast(`Welcome, ${currentUser.fullName}!`);
-        }, 500);
-    });
-
-    emailLoginBtn.addEventListener('click', () => {
-        loginModal.style.display = 'none';
-        emailSigninModal.style.display = 'flex';
-    });
-
-    sendMagicLinkBtn.addEventListener('click', () => {
-        const emailInput = document.getElementById('magic-link-email');
-        const email = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        magicLinkError.style.display = 'none';
-
-        if (emailRegex.test(email)) {
-            // In a real app, you'd call a backend to send the email.
-            // Here, we just simulate it.
-            emailSigninModal.style.display = 'none';
-            showToast(`Magic link sent to ${email}. Please check your inbox.`);
-            emailInput.value = ''; // Clear the input for next time
-        } else {
-            magicLinkError.textContent = 'Please enter a valid email address.';
-            magicLinkError.style.display = 'block';
-        }
-    });
-
-    // Forgot Password Modal Logic
-    sendResetLinkBtn.addEventListener('click', () => {
-        const emailInput = document.getElementById('reset-email');
-        const email = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        resetEmailError.style.display = 'none';
-
-        if (emailRegex.test(email)) {
-            // In a real app, you'd call a backend to send the reset email.
-            // Here, we just simulate it.
-            forgotPasswordModal.style.display = 'none';
-            showToast(`Password reset link sent to ${email}.`);
-            emailInput.value = ''; // Clear the input for next time
-        } else {
-            resetEmailError.textContent = 'Please enter a valid email address.';
-            resetEmailError.style.display = 'block';
-        }
-    });
-
-    // NOTE: The logic for restoring the login modal content after social login
-    // has been removed as it's replaced by the new dedicated modals.
-
-    notificationCancelBtn.addEventListener('click', () => {
-        notificationModal.style.display = 'none';
-    });
-
-    // Close modals
-    closeModal.forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            modal.style.display = 'none';
-        }
-)});
     
     // Search functionality
     searchInput.addEventListener('input', function() {
@@ -647,29 +426,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${product.image}" alt="${product.name}">
                 <div>
                     <div>${product.name}</div>
-                    <div style="color: #CC0000; font-weight: 500;">Ksh ${product.price.toLocaleString()}</div>
+                    <div style="color: #ff6b00; font-weight: 500;">Ksh ${product.price.toLocaleString()}</div>
                 </div>
             `;
             resultItem.addEventListener('click', function() {
                 searchInput.value = product.name;
                 searchResults.style.display = 'none';
-
-                // First, ensure the product's category is displayed
-                filterProductsByCategory(product.category);
-
-                // Use a short delay to allow the DOM to update with the new products
-                setTimeout(() => {
-                    const productElement = document.querySelector(`.product-card[data-id="${product.id}"]`);
-                    if (!productElement) return;
-
-                    // Now scroll to the specific product card
-                    productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Add a temporary highlight effect
-                    productElement.style.transition = 'box-shadow 0.3s ease-in-out';
-                    productElement.style.boxShadow = '0 0 0 3px rgba(204, 0, 0, 0.5)';
-                    setTimeout(() => { productElement.style.boxShadow = ''; }, 2000);
-                }, 100); // 100ms delay is usually enough for the DOM to repaint
+                
+                // Filter products to show only this product
+                const allProducts = document.querySelectorAll('.product-card');
+                allProducts.forEach(p => {
+                    p.style.display = 'none';
+                });
+                
+                const productElements = document.querySelectorAll(`.product-card[data-id="${product.id}"]`);
+                productElements.forEach(element => {
+                    element.style.display = 'block';
+                });
+                
+                // Scroll to products section
+                document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
             });
             searchResults.appendChild(resultItem);
         });
@@ -945,7 +721,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             statusContainer.innerHTML = `
                 <p><strong>Order ID:</strong> ${order.id}</p>
-                <p><strong>Status:</strong> <span style="color: #CC0000; font-weight: bold;">${order.status}</span></p>
+                <p><strong>Status:</strong> <span style="color: #e8402a; font-weight: bold;">${order.status}</span></p>
                 <p>${deliveryInfo}</p>
             `;
         } else {

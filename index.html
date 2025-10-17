@@ -172,17 +172,17 @@
                         <input type="checkbox" id="remember-me">
                         <label for="remember-me">Remember me</label>
                     </div>
-                    <a href="#" id="forgot-password-link">Forgot password?</a>
+                    <a href="#">Forgot password?</a>
                 </div>
                 <button class="btn" id="login-btn" style="width: 100%;">Login</button>
                 <p id="login-error" style="color: red; text-align: center; margin-top: 10px; display: none;"></p>
                 <div class="social-login">
                     <p>Or login with</p>
                     <div>
-                        <button class="social-login-btn" id="google-login-btn">
+                        <button class="social-login-btn">
                             <i class="fab fa-google"></i> Google
                         </button>
-                        <button class="social-login-btn" id="email-login-btn">
+                        <button class="social-login-btn">
                             <i class="fas fa-envelope"></i> Email
                         </button>
                     </div>
@@ -191,94 +191,6 @@
                     <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div class="modal" id="signup-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Create Your Account</h2>
-            <div class="signup-form">
-                <div class="form-group">
-                    <label for="signup-fullname">Full Name</label>
-                    <input type="text" id="signup-fullname" placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="signup-username">Username or Email</label>
-                    <input type="text" id="signup-username" placeholder="Enter your username or email">
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" placeholder="Create a password">
-                </div>
-                <div class="form-group">
-                    <label for="signup-confirm-password">Confirm Password</label>
-                    <input type="password" id="signup-confirm-password" placeholder="Confirm your password">
-                </div>
-                <button class="btn" id="signup-btn" style="width: 100%;">Sign Up</button>
-                <p id="signup-error" style="color: red; text-align: center; margin-top: 10px; display: none;"></p>
-                <div class="login-link">
-                    <p>Already have an account? <a href="#" id="login-link">Log in</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Google Sign-in Simulation Modal -->
-    <div class="modal" id="google-signin-modal">
-        <div class="modal-content" style="max-width: 400px;">
-            <span class="close-modal">&times;</span>
-            <div style="text-align: center; padding: 10px 0;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" style="width: 30px; height: 30px; margin-bottom: 10px;">
-                <h3>Choose an account</h3>
-                <p>to continue to Beipoas</p>
-            </div>
-            <div class="google-account-list">
-                <div class="google-account-item" id="google-dummy-account">
-                    <img src="https://ssl.gstatic.com/s2/profiles/images/silhouette96.png" alt="User" class="google-avatar">
-                    <div class="google-account-info">
-                        <strong>Google User</strong>
-                        <span>google.user@example.com</span>
-                    </div>
-                </div>
-                <div class="google-account-item">
-                    <i class="fas fa-user-plus google-avatar-icon"></i>
-                    <div class="google-account-info">
-                        <strong>Use another account</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Email Sign-in Modal -->
-    <div class="modal" id="email-signin-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Sign in with Email</h2>
-            <p>Enter your email address to receive a magic link to sign in.</p>
-            <div class="form-group" style="margin-top: 20px;">
-                <label for="magic-link-email">Email Address</label>
-                <input type="email" id="magic-link-email" placeholder="you@example.com">
-                <p id="magic-link-error" style="color: red; margin-top: 5px; display: none;"></p>
-            </div>
-            <button class="btn" id="send-magic-link-btn" style="width: 100%;">Send Magic Link</button>
-        </div>
-    </div>
-
-    <!-- Forgot Password Modal -->
-    <div class="modal" id="forgot-password-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Reset Your Password</h2>
-            <p>Enter your email address and we will send you a link to reset your password.</p>
-            <div class="form-group" style="margin-top: 20px;">
-                <label for="reset-email">Email Address</label>
-                <input type="email" id="reset-email" placeholder="you@example.com">
-                <p id="reset-email-error" style="color: red; margin-top: 5px; display: none;"></p>
-            </div>
-            <button class="btn" id="send-reset-link-btn" style="width: 100%;">Send Reset Link</button>
         </div>
     </div>
 
@@ -316,7 +228,6 @@
                 <h3>My Wishlist</h3>
                 <p>Your wishlist is empty.</p>
             </div>
-            <button class="btn btn-secondary" id="logout-btn" style="width: 100%; margin-top: 20px;">Logout</button>
         </div>
     </div>
 
