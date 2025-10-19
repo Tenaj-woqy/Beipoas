@@ -9,18 +9,18 @@ const products = [
     { id: 6, name: " Sony 4K Smart TV 55 inch", price: 64999, category: "electronics", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80", oldPrice: 79999, rating: 4.5, featured: false, flashSale: true },
     
     // Health & Beauty
-    { id: 7, name: "Body Lotion", price: 999, category: "health", image: "https://images-na.ssl-images-amazon.com/images/I/31G9bnw7OpL.jpg", oldPrice: null, rating: 4.5, featured: true, flashSale: true },
+    { id: 7, name: "Body Lotion", price: 999, category: "health", image: "https://media.allure.com/photos/659c52c2e7fa0aa260fe094a/4:3/w_2664,h_1998,c_limit/best_body_lotions_002.jpg", oldPrice: null, rating: 4.5, featured: true, flashSale: true },
     { id: 8, name: "Electric Toothbrush", price: 5999, category: "health", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgVDkJq4y4u3SipYXiqnbxYJhf23QzIDNKvg&s", oldPrice: 7999, rating: 4.5, featured: false, flashSale: true },
-    { id: 9, name: "Hair Dryer ", price: 7999, category: "health", image: "https://images.unsplash.com/photo-1522338140262-f46f5913618a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80", oldPrice: 9999, rating: 4, featured: false, flashSale: true },
+    { id: 9, name: "Bathing Towels ", price: 7999, category: "health", image: "https://i0.wp.com/kingscollection.co.ke/wp-content/uploads/2023/02/alem-maroon-DSC_1043.jpg?fit=600%2C600&ssl=1", oldPrice: 9999, rating: 4, featured: false, flashSale: true },
     { id: 10, name: "Sanitary pads Bin", price: 4599, category: "health", image: "https://m.media-amazon.com/images/I/71ak2ETXqIL._UF1000,1000_QL80_.jpg", oldPrice: 5999, rating: 4, featured: false, flashSale: false },
     { id: 11, name: "Makeup Kit", price: 3499, category: "health", image: "https://thetoypalace.co.ke/wp-content/uploads/2024/09/Make-Up-Kit-1.jpg", oldPrice: null, rating: 4.5, featured: true, flashSale: false },
     { id: 12, name: "Essential Oil Diffuser", price: 3999, category: "health", image: "https://i5.walmartimages.com/seo/Durcord-Essential-Oil-Diffuser-Cool-Mist-Humidifier-and-Air-Aroma-Diffuser-with-7-Colors-Flame-Volcano-Light-for-Spa-Yoga-Christmas-Gift-Black_f614acdc-faeb-458a-94c1-620befa3986c.9b2680be7daf3bc71ceeca08d7993373.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", oldPrice: 4999, rating: 4, featured: false, flashSale: false },
     
     // Fashion
-    { id: 13, name: "Running Sneakers", price: 7499, category: "fashion", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80", oldPrice: null, rating: 5, featured: true, flashSale: false },
-    { id: 14, name: "Leather Jacket", price: 12999, category: "fashion", image: "https://images.cdn.inspogroup.net/pCSKZKGU0knVMe5sKjajr1DYLUQAdsXaixSjmFO1YEo/g:ce/trim:10/h:440/w:330/czM6L/y9zdH/lsaWdodC1pbWctcHJvY2Vzc2luZy9waG90b2JveC9mMDE1OTg3ZDFiZjI2NzIwODJkOTA3OTc4Mzk1OWZkMy5qcGc", oldPrice: 15999, rating: 4.5, featured: false, flashSale: true },
-    { id: 15, name: "Designer Handbag", price: 18999, category: "fashion", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80", oldPrice: 22999, rating: 4, featured: false, flashSale: true },
-    { id: 16, name: "Men's Casual Shirt", price: 3999, category: "fashion", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80", oldPrice: 4999, rating: 4, featured: false, flashSale: false },
+    { id: 13, name: "Nike Airmax Sneakers", price: 7499, category: "fashion", image: "https://www.elverys.ie/cdn/shop/files/C1-1145605-636Wx636H.jpg?v=1719909364&width=1600", oldPrice: null, rating: 5, featured: true, flashSale: false },
+    { id: 14, name: "Rain Coat", price: 12999, category: "fashion", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtMMZk1ypawnUgFwqI3iVPzsAGGBPw2acA0w&s", oldPrice: 15999, rating: 4.5, featured: false, flashSale: true },
+    { id: 15, name: "Chanel Handbag", price: 18999, category: "fashion", image: "https://mygemma.com/cdn/shop/articles/WPD-Top-Blog-Image-2022-02-07T104346.218.png?v=1695913150", oldPrice: 22999, rating: 4, featured: false, flashSale: true },
+    { id: 16, name: "Men's Suits", price: 3999, category: "fashion", image: "https://img.freepik.com/free-vector/mans-suit-realistic-composition-with-smart-costume-with-white-shirt-tie-jacket_1284-54345.jpg?semt=ais_hybrid&w=740&q=80", oldPrice: 4999, rating: 4, featured: false, flashSale: false },
     { id: 17, name: "Cargo Pants", price: 5999, category: "fashion", image: "https://hiii-style.com/cdn/shop/files/A90D1ADC-D22A-40C0-8178-C7A4331170BA.jpg?v=1725111460", oldPrice: 7999, rating: 4.5, featured: true, flashSale: false },
     { id: 18, name: "Necklaces", price: 2999, category: "fashion", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaovx3UVi5MI-AHlF2N8kOghEZR8oxlUihNw&s", oldPrice: 3999, rating: 4, featured: false, flashSale: false },
     
@@ -57,8 +57,8 @@ const products = [
     { id: 42, name: "Fresh Onions", price: 69, category: "groceries", image: "https://d16zmt6hgq1jhj.cloudfront.net/product/9304/Onion%20Prepacked%20Red.jpg", oldPrice: null, rating: 4, featured: false, flashSale: false },
     { id: 43, name: "Ripe Tomatoes", price: 59, category: "groceries", image: "https://www.mashed.com/img/gallery/the-absolute-best-way-to-fix-unripe-tomatoes/intro-1668529017.jpg", oldPrice: null, rating: 4.5, featured: false, flashSale: false },
     { id: 44, name: "Avocados", price: 49, category: "groceries", image: "https://woodstockfarmersmarket.com/wp-content/uploads/2024/04/PXL_20240411_155223163.MP_-scaled-e1712853746865.jpg", oldPrice: 69, rating: 4, featured: true, flashSale: true },
-    { id: 45, name: "Bananas", price: 39, category: "groceries", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80", oldPrice: null, rating: 4, featured: false, flashSale: false },
-    { id: 46, name: "Oranges", price: 79, category: "groceries", image: "https://images.unsplash.com/photo-1547514701-42782101795e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80", oldPrice: 99, rating: 4.5, featured: false, flashSale: true }
+    { id: 45, name: "Bananas", price: 39, category: "groceries", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi2a3_39qnAr2DTOc6IPansdxVIPH-FdSuxQ&s", oldPrice: null, rating: 4, featured: false, flashSale: false },
+    { id: 46, name: "Oranges", price: 79, category: "groceries", image: "https://drearth.com/wp-content/uploads/Oranges-iStock-1493917402.jpg", oldPrice: 99, rating: 4.5, featured: false, flashSale: true }
 ];
 
 // Dummy order data for tracking simulation
@@ -75,29 +75,34 @@ let currentUser = null;
 // Cart functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Load cart from localStorage or initialize as an empty array
-    let cart = JSON.parse(localStorage.getItem('beipoasCart')) || [];
+    let cart = [];
+    let wishlist = [];
     const cartCount = document.querySelector('.cart-count');
-    const cartButton = document.getElementById('cart-button');
     const cartModal = document.getElementById('cart-modal');
-    const closeModal = document.querySelectorAll('.close-modal');
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const emptyCartMessage = document.getElementById('empty-cart-message');
     const checkoutBtn = document.getElementById('checkout-btn');
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const shopNowBtn = document.getElementById('shop-now-btn');
-    const heroSection = document.getElementById('hero-section');
     const accountButton = document.getElementById('account-button');
     const accountModal = document.getElementById('account-modal');
-    const offersButton = document.getElementById('offers-button');
-    const offersModal = document.getElementById('offers-modal');
+    const signupModal = document.getElementById('signup-modal');
+    const signupBtn = document.getElementById('signup-btn');
+    const signupError = document.getElementById('signup-error');
+    const forgotPasswordModal = document.getElementById('forgot-password-modal');
+    const resetPasswordBtn = document.getElementById('reset-password-btn');
+    const forgotError = document.getElementById('forgot-error');
+
+    // Login Modal
     const loginModal = document.getElementById('login-modal');
     const togglePassword = document.getElementById('toggle-password');
     const passwordInput = document.getElementById('password');
     const loginBtn = document.getElementById('login-btn');
     const searchInput = document.getElementById('search-input');
     const loginError = document.getElementById('login-error');
-    const searchResults = document.getElementById('search-results');
+    const googleLoginBtn = document.getElementById('google-login-btn');
+    const emailLoginBtn = document.getElementById('email-login-btn');
     const searchForm = document.getElementById('search-form');
     const flashSalesProducts = document.getElementById('flash-sales-products');
     const featuredProducts = document.getElementById('featured-products');
@@ -108,20 +113,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const notificationMessage = document.getElementById('notification-message');
     const notificationOkBtn = document.getElementById('notification-ok-btn');
     const notificationCancelBtn = document.getElementById('notification-cancel-btn');
-    const toastContainer = document.getElementById('toast-container');
     const mpesaModal = document.getElementById('mpesa-modal');
     const mpesaPayBtn = document.getElementById('mpesa-pay-btn');
     const mpesaError = document.getElementById('mpesa-error');
     const trackOrderModal = document.getElementById('track-order-modal');
     const trackOrderBtn = document.getElementById('track-order-btn');
     const backToTopBtn = document.getElementById('back-to-top-btn');
+    const promptModal = document.getElementById('prompt-modal');
+    const promptTitle = document.getElementById('prompt-title');
+    const promptMessage = document.getElementById('prompt-message');
+    const promptInput = document.getElementById('prompt-input');
+    const promptOkBtn = document.getElementById('prompt-ok-btn');
     let confirmCallback = null;
+    let promptCallback = null;
+    const mainContent = document.getElementById('main-content');
+    const productPageView = document.getElementById('product-page-view');
+    const backToHomeBtn = document.getElementById('back-to-home-btn');
     
     // Initialize product displays
     displayFlashSalesProducts();
     displayFeaturedProducts();
     updateCart(); // Update cart on initial page load
+    updateWishlistDisplay();
+    initializeModalHandlers();
     
+    // Back to home button
+    backToHomeBtn.addEventListener('click', () => {
+        mainContent.style.display = 'block';
+        productPageView.style.display = 'none';
+        window.scrollTo(0, 0);
+    });
+
     // Add to cart buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('add-to-cart')) {
@@ -130,8 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            const productCard = e.target.closest('.product-card');
+            const productCard = e.target.closest('[data-id]');
             const productId = productCard.dataset.id;
+            const productImage = productCard.querySelector('.product-image');
             const product = products.find(p => p.id == productId);
             
             if (product) {
@@ -151,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 updateCart();
+                flyToCart(productImage);
                 showToast(`${product.name} has been added to cart`);
             }
         }
@@ -162,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const productCard = e.target.closest('.product-card');
+            const productCard = e.target.closest('[data-id]');
             const productId = productCard.dataset.id;
             const product = products.find(p => p.id == productId);
 
@@ -188,6 +212,66 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateCart();
             }
         }
+
+        // Wishlist icon click
+        if (e.target.classList.contains('wishlist-icon')) {
+            if (!isLoggedIn) {
+                openModal('login-modal');
+                return;
+            }
+            const productId = e.target.dataset.id;
+            const productIndex = wishlist.indexOf(productId);
+
+            if (productIndex > -1) {
+                wishlist.splice(productIndex, 1); // Remove from wishlist
+                e.target.classList.remove('active');
+                showToast('Removed from wishlist');
+            } else {
+                wishlist.push(productId); // Add to wishlist
+                e.target.classList.add('active');
+                // Add bounce animation and remove it after it finishes
+                e.target.classList.add('bounce');
+                e.target.addEventListener('animationend', () => {
+                    e.target.classList.remove('bounce');
+                }, { once: true });
+                showToast('Added to wishlist');
+            }
+            localStorage.setItem('beipoasWishlist', JSON.stringify(wishlist));
+            updateWishlistDisplay();
+        }
+
+        // Quantity controls in cart
+        if (e.target.classList.contains('increase-quantity')) {
+            const productId = e.target.dataset.id;
+            const item = cart.find(i => i.id == productId);
+            if (item) {
+                item.quantity++;
+                updateCart();
+            }
+        }
+
+        if (e.target.classList.contains('decrease-quantity')) {
+            const productId = e.target.dataset.id;
+            const item = cart.find(i => i.id == productId);
+            if (item) {
+                item.quantity--;
+                if (item.quantity <= 0) {
+                    // Remove item if quantity is 0 or less
+                    const index = cart.findIndex(i => i.id == productId);
+                    cart.splice(index, 1);
+                }
+                updateCart();
+            }
+        }
+
+        // Show product page view from product card image/title
+        if (e.target.matches('.product-image, .product-title')) {
+            const productCard = e.target.closest('.product-card');
+            const productId = productCard.dataset.id;
+            const product = products.find(p => p.id == productId);
+            if (product) displayProductPage(product);
+        }
+
     });
     
     // Clear cart button
@@ -210,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (cart.length === 0) {
+            showNotification('Empty Cart', 'Your cart is empty. Please add items before proceeding to checkout.');
             return;
         }
         cartModal.style.display = 'none';
@@ -226,11 +311,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cart.length === 0) {
             emptyCartMessage.style.display = 'block';
             cartItems.innerHTML = ''; // Clear the items visually
-            if (checkoutBtn) checkoutBtn.disabled = true;
             if (clearCartBtn) clearCartBtn.disabled = true;
         } else {
             emptyCartMessage.style.display = 'none';
-            if (checkoutBtn) checkoutBtn.disabled = false;
             if (clearCartBtn) clearCartBtn.disabled = false;
             
             cartItems.innerHTML = ''; // Clear cart items before re-rendering
@@ -243,7 +326,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
-                        <div class="cart-item-price">Ksh ${item.price.toLocaleString()} x ${item.quantity}</div>
+                        <div class="cart-item-price">Ksh ${item.price.toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                        <span class="quantity-value">${item.quantity}</span>
+                        <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
                     </div>
                     <button class="btn remove-from-cart" data-id="${item.id}">Remove</button>
                 `;
@@ -256,45 +344,75 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = `Total: Ksh ${total.toLocaleString()}`;
     }
     
-    // Cart modal functionality
-    cartButton.addEventListener('click', function() {
-        cartModal.style.display = 'flex';
-    });
-    
+    // Update wishlist display in account modal
+    function updateWishlistDisplay() {
+        const wishlistContent = document.getElementById('wishlist-content');
+        const wishlistProducts = products.filter(p => wishlist.includes(String(p.id)));
+
+        if (wishlistProducts.length === 0) {
+            wishlistContent.innerHTML = '<h3>My Wishlist</h3><p>Your wishlist is empty.</p>';
+        } else {
+            wishlistContent.innerHTML = '<h3>My Wishlist</h3>';
+            wishlistProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                // Remove the wishlist icon from the card inside the wishlist view
+                const icon = productCard.querySelector('.wishlist-icon');
+                if (icon) icon.remove();
+                wishlistContent.appendChild(productCard);
+            });
+        }
+    }
+
     // Account modal functionality
     accountButton.addEventListener('click', function() {
         if (!isLoggedIn) {
-            loginModal.style.display = 'flex';
+            openModal('login-modal');
         } else {
-            accountModal.style.display = 'flex';
+            // Refresh wishlist display every time account is opened
+            updateWishlistDisplay();
+            openModal('account-modal');
         }
     });
-    
-    // Offers modal functionality
-    offersButton.addEventListener('click', function() {
-        offersModal.style.display = 'flex';
-    });
-    
-    // Close modals
-    closeModal.forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            modal.style.display = 'none';
+
+    // Generic Modal Handling
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'flex';
+        }
+    }
+
+    function closeModal(modalElement) {
+        if (modalElement) {
+            modalElement.style.display = 'none';
+        }
+    }
+
+    function initializeModalHandlers() {
+        document.addEventListener('click', function(e) {
+            // Open modal
+            const openTrigger = e.target.closest('[data-modal-open]');
+            if (openTrigger) {
+                e.preventDefault();
+                if (openTrigger.hasAttribute('data-modal-close-current')) {
+                    closeModal(e.target.closest('.modal'));
+                }
+                openModal(openTrigger.dataset.modalOpen);
+            }
+
+            // Close modal
+            const closeTrigger = e.target.closest('[data-modal-close]') || (e.target.classList.contains('modal') ? e.target : null);
+            if (closeTrigger) {
+                closeModal(closeTrigger.closest('.modal'));
+            }
         });
-    });
-    
-    window.addEventListener('click', function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
-        }
-    });
-    
+    }
+
     // Shop Now button
     shopNowBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        heroSection.classList.add('burgundy-bg');
-        // Scroll to products section
-        document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+        // Scroll to the featured products section
+        document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });
     });
     
     // Toggle password visibility
@@ -309,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         notificationTitle.textContent = title;
         notificationMessage.textContent = message;
         notificationCancelBtn.style.display = 'none';
-        notificationOkBtn.textContent = 'OK';
+        notificationOkBtn.textContent = 'OK'; // Set text for OK button
         notificationModal.style.display = 'flex';
         confirmCallback = null;
     }
@@ -330,8 +448,70 @@ document.addEventListener('DOMContentLoaded', function() {
         notificationModal.style.display = 'none';
     });
 
+    notificationCancelBtn.addEventListener('click', () => {
+        notificationModal.style.display = 'none';
+    });
+
+    // Custom Prompt Modal Logic
+    function showPrompt(title, message, placeholder, callback) {
+        promptTitle.textContent = title;
+        promptMessage.textContent = message;
+        promptInput.value = '';
+        promptInput.placeholder = placeholder || '';
+        promptModal.style.display = 'flex';
+        promptInput.focus();
+        promptCallback = callback;
+    }
+
+    promptOkBtn.addEventListener('click', () => {
+        if (promptCallback) {
+            promptCallback(promptInput.value);
+        }
+        promptModal.style.display = 'none';
+    });
+
+    document.getElementById('prompt-cancel-btn').addEventListener('click', () => {
+        promptModal.style.display = 'none';
+    });
+
+    // Fly to cart animation
+    function flyToCart(productImage) {
+        const cartIcon = document.getElementById('cart-icon');
+        if (!productImage || !cartIcon) return;
+
+        // Get positions
+        const imgRect = productImage.getBoundingClientRect();
+        const cartRect = cartIcon.getBoundingClientRect();
+
+        // Create a clone of the image
+        const flyingImg = productImage.cloneNode(true);
+        flyingImg.classList.add('fly-to-cart-img');
+        document.body.appendChild(flyingImg);
+
+        // Set initial position
+        flyingImg.style.left = `${imgRect.left}px`;
+        flyingImg.style.top = `${imgRect.top}px`;
+        flyingImg.style.width = `${imgRect.width}px`;
+        flyingImg.style.height = `${imgRect.height}px`;
+
+        // Animate to cart
+        requestAnimationFrame(() => {
+            flyingImg.style.left = `${cartRect.left + (cartRect.width / 2)}px`;
+            flyingImg.style.top = `${cartRect.top + (cartRect.height / 2)}px`;
+            flyingImg.style.width = '0px';
+            flyingImg.style.height = '0px';
+            flyingImg.style.opacity = '0.5';
+        });
+
+        // Remove the element after animation
+        setTimeout(() => {
+            flyingImg.remove();
+        }, 1000); // Match the transition duration in CSS
+    }
+
     // Toast Notification Logic
     function showToast(message, duration = 3000) {
+        const toastContainer = document.getElementById('toast-container');
         if (!toastContainer) return;
         const toast = document.createElement('div');
         toast.className = 'toast';
@@ -365,9 +545,83 @@ document.addEventListener('DOMContentLoaded', function() {
             loginError.style.display = 'block';
         }
     });
+
+    // Google Login button
+    googleLoginBtn.addEventListener('click', function() {
+        // Simulate asking for account
+        showPrompt('Login with Google', 'Please enter your Google account name (e.g., user@gmail.com) or another account to proceed.', 'Account Name', (accountName) => {
+            if (accountName) {
+                isLoggedIn = true;
+                currentUser = { username: accountName };
+                loginModal.style.display = 'none';
+                showToast(`Successfully logged in as ${accountName}!`);
+            }
+        });
+    });
+
+    // Email Login button
+    emailLoginBtn.addEventListener('click', function() {
+        showPrompt('Login with Email', 'Please enter your email address to receive a login link.', 'your@email.com', (email) => {
+            if (email) {
+                loginModal.style.display = 'none';
+                showNotification(
+                    'Check Your Email',
+                    `A login link has been sent to ${email}. Please check your inbox to continue.`
+                );
+            }
+        });
+    });
+
+
+    // Signup functionality
+    signupBtn.addEventListener('click', function() {
+        const username = document.getElementById('signup-username').value;
+        const password = document.getElementById('signup-password').value;
+        const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+        signupError.style.display = 'none';
+
+        if (!username || !password || !confirmPassword) {
+            signupError.textContent = 'Please fill in all fields.';
+            signupError.style.display = 'block';
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            signupError.textContent = 'Passwords do not match.';
+            signupError.style.display = 'block';
+            return;
+        }
+
+        // Simulate successful signup
+        isLoggedIn = true;
+        currentUser = { username: username };
+        signupModal.style.display = 'none';
+        showToast(`Welcome, ${username}! Your account has been created.`);
+    });
+
+    // Reset Password functionality
+    resetPasswordBtn.addEventListener('click', function() {
+        const email = document.getElementById('forgot-email').value;
+        forgotError.style.display = 'none';
+
+        if (!email) {
+            forgotError.textContent = 'Please enter your email address.';
+            forgotError.style.display = 'block';
+            return;
+        }
+
+        // Simulate sending a reset link
+        forgotPasswordModal.style.display = 'none';
+        showNotification(
+            'Password Reset',
+            `If an account exists for ${email}, a password reset link has been sent.`
+        );
+    });
     
     // Search functionality
     searchInput.addEventListener('input', function() {
+        const searchResults = document.getElementById('search-results');
         const query = this.value.toLowerCase();
         
         if (query.length > 0) {
@@ -384,6 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     searchForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        const searchResults = document.getElementById('search-results');
         const query = searchInput.value.toLowerCase();
         
         if (query.length > 0) {
@@ -412,6 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function displaySearchResults(results) {
+        const searchResults = document.getElementById('search-results');
         searchResults.innerHTML = '';
         
         if (results.length === 0) {
@@ -430,25 +686,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             resultItem.addEventListener('click', function() {
-                searchInput.value = product.name;
                 searchResults.style.display = 'none';
-                
-                // Filter products to show only this product
-                const allProducts = document.querySelectorAll('.product-card');
-                allProducts.forEach(p => {
-                    p.style.display = 'none';
-                });
-                
-                const productElements = document.querySelectorAll(`.product-card[data-id="${product.id}"]`);
-                productElements.forEach(element => {
-                    element.style.display = 'block';
-                });
-                
-                // Scroll to products section
-                document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+                displayProductPage(product);
             });
             searchResults.appendChild(resultItem);
         });
+    }
+
+    // Display product details on its own page
+    function displayProductPage(product) {
+        const productPageContent = document.getElementById('product-page-content');
+        
+        let oldPriceHtml = '';
+        if (product.oldPrice) {
+            oldPriceHtml = `<span class="old-price">Ksh ${product.oldPrice.toLocaleString()}</span>`;
+        }
+
+        let ratingHtml = '';
+        const fullStars = Math.floor(product.rating);
+        const hasHalfStar = product.rating % 1 !== 0;
+        for (let i = 0; i < fullStars; i++) { ratingHtml += '<i class="fas fa-star"></i>'; }
+        if (hasHalfStar) { ratingHtml += '<i class="fas fa-star-half-alt"></i>'; }
+        const emptyStars = 5 - Math.ceil(product.rating);
+        for (let i = 0; i < emptyStars; i++) { ratingHtml += '<i class="far fa-star"></i>'; }
+
+        // Generate a simple description
+        const description = `Discover the amazing ${product.name}. Perfect for your needs in the ${product.category} category. Enjoy top quality and the best price only at Beipoas.`;
+
+        productPageContent.innerHTML = `
+            <div id="product-page-image-container">
+                <img src="${product.image}" alt="${product.name}" id="product-page-image" class="product-image">
+            </div>
+            <div id="product-page-details" data-id="${product.id}">
+                <h2>${product.name}</h2>
+                <div class="product-price">Ksh ${product.price.toLocaleString()} ${oldPriceHtml}</div>
+                <div class="product-rating">${ratingHtml} (${product.rating})</div>
+                <p class="product-description">${description}</p>
+                <div class="product-actions">
+                    <button class="btn btn-secondary order-now">Order Now</button>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        `;
+
+        // Switch views
+        mainContent.style.display = 'none';
+        productPageView.style.display = 'block';
+        window.scrollTo(0, 0); // Scroll to top of the page
     }
     
     // Display flash sales products
@@ -506,8 +790,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ratingHtml += '<i class="far fa-star"></i>';
         }
         
+        const isWishlisted = wishlist.includes(String(product.id));
+        const wishlistIconClass = isWishlisted ? 'fas fa-heart wishlist-icon active' : 'far fa-heart wishlist-icon';
+
         productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <img src="${product.image}" alt="${product.name}" class="product-image" style="cursor: pointer;">
             <div class="product-info">
                 <div class="product-title">${product.name}</div>
                 <div class="product-price">Ksh ${product.price.toLocaleString()} ${oldPriceHtml}</div>
@@ -519,6 +806,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
             </div>
+            <i class="${wishlistIconClass}" data-id="${product.id}"></i>
         `;
         
         return productCard;
