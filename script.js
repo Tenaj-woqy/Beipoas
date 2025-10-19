@@ -70,11 +70,10 @@ const orders = [
 
 // User state
 let isLoggedIn = false;
-let currentUser = null;
+let currentUser = null; // Will be loaded from localStorage
 
 // Cart functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Load cart from localStorage or initialize as an empty array
     let cart = [];
     let wishlist = [];
     const cartCount = document.querySelector('.cart-count');
@@ -129,14 +128,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.getElementById('main-content');
     const productPageView = document.getElementById('product-page-view');
     const backToHomeBtn = document.getElementById('back-to-home-btn');
+    const saveProfileBtn = document.getElementById('save-profile-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // --- State Initialization from LocalStorage ---
+    function loadStateFromLocalStorage() {
+        // Load cart
+        const storedCart = localStorage.getItem('beipoasCart');
+        if (storedCart) cart = JSON.parse(storedCart);
+
+        // Load wishlist
+        const storedWishlist = localStorage.getItem('beipoasWishlist');
+        if (storedWishlist) wishlist = JSON.parse(storedWishlist);
+
+        // Load user session
+        const storedUser = localStorage.getItem('beipoasCurrentUser');
+        if (storedUser) {
+            currentUser = JSON.parse(storedUser);
+            isLoggedIn = true;
+            accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.username}`;
+        }
+    }
     
     // Initialize product displays
+    loadStateFromLocalStorage();
     displayFlashSalesProducts();
     displayFeaturedProducts();
     updateCart(); // Update cart on initial page load
     updateWishlistDisplay();
     initializeModalHandlers();
-    
+
     // Back to home button
     backToHomeBtn.addEventListener('click', () => {
         mainContent.style.display = 'block';
@@ -370,6 +391,12 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // Refresh wishlist display every time account is opened
             updateWishlistDisplay();
+            // Populate profile fields
+            if (currentUser) {
+                document.getElementById('full-name').value = currentUser.fullName || '';
+                document.getElementById('email').value = currentUser.email || '';
+                document.getElementById('phone').value = currentUser.phone || '';
+            }
             openModal('account-modal');
         }
     });
@@ -425,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Notification/Confirmation Modal Logic
     function showNotification(title, message) {
         notificationTitle.textContent = title;
-        notificationMessage.textContent = message;
+        notificationMessage.innerHTML = message; // Use innerHTML to render bold tags
         notificationCancelBtn.style.display = 'none';
         notificationOkBtn.textContent = 'OK'; // Set text for OK button
         notificationModal.style.display = 'flex';
@@ -537,7 +564,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (username && password) {
             isLoggedIn = true;
-            currentUser = { username: username };
+            currentUser = { 
+                username: username,
+                fullName: '',
+                email: '',
+                phone: ''
+            };
+            localStorage.setItem('beipoasCurrentUser', JSON.stringify(currentUser));
+            accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.username}`;
             loginModal.style.display = 'none';
             showToast(`Welcome back, ${username}!`);
         } else {
@@ -552,7 +586,14 @@ document.addEventListener('DOMContentLoaded', function() {
         showPrompt('Login with Google', 'Please enter your Google account name (e.g., user@gmail.com) or another account to proceed.', 'Account Name', (accountName) => {
             if (accountName) {
                 isLoggedIn = true;
-                currentUser = { username: accountName };
+                currentUser = { 
+                    username: accountName,
+                    fullName: '',
+                    email: accountName.includes('@') ? accountName : '',
+                    phone: ''
+                };
+                localStorage.setItem('beipoasCurrentUser', JSON.stringify(currentUser));
+                accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.username}`;
                 loginModal.style.display = 'none';
                 showToast(`Successfully logged in as ${accountName}!`);
             }
@@ -564,6 +605,15 @@ document.addEventListener('DOMContentLoaded', function() {
         showPrompt('Login with Email', 'Please enter your email address to receive a login link.', 'your@email.com', (email) => {
             if (email) {
                 loginModal.style.display = 'none';
+                isLoggedIn = true; // Assuming login link works instantly for simulation
+                currentUser = { 
+                    username: email.split('@')[0],
+                    fullName: '',
+                    email: email,
+                    phone: ''
+                }; // Use part of email as name
+                localStorage.setItem('beipoasCurrentUser', JSON.stringify(currentUser));
+                accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.username}`;
                 showNotification(
                     'Check Your Email',
                     `A login link has been sent to ${email}. Please check your inbox to continue.`
@@ -595,9 +645,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Simulate successful signup
         isLoggedIn = true;
-        currentUser = { username: username };
+        currentUser = { 
+            username: username,
+            fullName: '',
+            email: '',
+            phone: ''
+        };
+        localStorage.setItem('beipoasCurrentUser', JSON.stringify(currentUser));
+        accountButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.username}`;
         signupModal.style.display = 'none';
         showToast(`Welcome, ${username}! Your account has been created.`);
+    });
+
+    // Logout functionality
+    logoutBtn.addEventListener('click', function() {
+        showConfirmation('Logout', 'Are you sure you want to log out?', () => {
+            isLoggedIn = false;
+            currentUser = null;
+            // Clear user session from localStorage
+            localStorage.removeItem('beipoasCurrentUser');
+            // Clear cart and wishlist
+            cart.length = 0;
+            wishlist.length = 0;
+            updateCart(); // This also updates localStorage for the cart
+            updateWishlistDisplay(); // Visually clear the wishlist in the account modal
+            localStorage.removeItem('beipoasWishlist'); // Explicitly remove wishlist
+            // Reset UI
+            accountButton.innerHTML = '<i class="fas fa-user"></i> Account';
+            closeModal(accountModal);
+            showToast('You have been logged out.');
+        });
     });
 
     // Reset Password functionality
@@ -892,35 +969,35 @@ document.addEventListener('DOMContentLoaded', function() {
             
             switch(id) {
                 case 'contact-link':
-                    showNotification('Contact Us', 'Email: support@beipoas.com\nPhone: +254 700 123 456');
+                    showNotification('Contact Us', '<strong>Email:</strong> support@beipoas.com\n<strong>Phone:</strong> +254 700 123 456');
                     break;
                 case 'faq-link':
-                    showNotification('FAQs', '1. How do I track my order?\nA: You can track your order from the "Track Order" link in the customer service section.\n\n2. What is your return policy?\nA: We offer a 30-day return policy on most items. Please see our full Returns & Refunds page for details.');
+                    showNotification('FAQs', '<strong>1. How do I track my order?</strong>\nA: You can track your order from the "Track Order" link in the customer service section.\n\n<strong>2. What is your return policy?</strong>\nA: We offer a 30-day return policy on most items. Please see our full Returns & Refunds page for details.');
                     break;
                 case 'returns-link':
                     showNotification('Returns & Refunds', 'Our policy is a 30-day return period for most items. Please visit our full policy page for details.');
                     break;
                 case 'delivery-link':
-                    showNotification('Delivery Information', 'We deliver nationwide within 2-5 business days. Delivery charges may apply.');
+                    showNotification('Delivery Information', 'We deliver nationwide within <strong>2-5 business days</strong>. Delivery charges may apply.');
                     break;
                 case 'track-link':
                     // Show the dedicated track order modal
                     trackOrderModal.style.display = 'flex';
                     break;
                 case 'about-link':
-                    showNotification('About Beipoas', 'Founded in 2023, Beipoas is Kenya\'s premier online marketplace. Our mission is to provide an unparalleled shopping experience by offering a wide selection of quality products, competitive prices, and exceptional customer service. We believe in the power of technology to make life simpler and more enjoyable.');
+                    showNotification('About Beipoas', 'Founded in 2023, Beipoas is <strong>Kenya\'s premier online marketplace</strong>. Our mission is to provide an unparalleled shopping experience by offering a wide selection of quality products, competitive prices, and exceptional customer service. We believe in the power of technology to make life simpler and more enjoyable.');
                     break;
                 case 'careers-link':
-                    showNotification('Careers', 'Join our dynamic team! We are currently hiring for the following roles:\n\n- Frontend Developer\n- Digital Marketing Specialist\n- Customer Support Representative\n\nTo apply, please send your resume to careers@beipoas.com.');
+                    showNotification('Careers', 'Join our dynamic team! We are currently hiring for the following roles:\n\n- Frontend Developer\n- Digital Marketing Specialist\n- Customer Support Representative\n\n<strong>To apply:</strong> Please send your resume to careers@beipoas.com.');
                     break;
                 case 'terms-link':
-                    showNotification('Terms & Conditions', '1. Introduction: Welcome to Beipoas. By using our website, you agree to these terms.\n2. User Accounts: You are responsible for maintaining the confidentiality of your account.\n3. Prohibited Activities: You may not use this site for any illegal or unauthorized purpose.\n\nThis is a summary. Please read the full terms for details.');
+                    showNotification('Terms & Conditions', '<strong>1. Introduction:</strong> Welcome to Beipoas. By using our website, you agree to these terms.\n<strong>2. User Accounts:</strong> You are responsible for maintaining the confidentiality of your account.\n<strong>3. Prohibited Activities:</strong> You may not use this site for any illegal or unauthorized purpose.\n\nThis is a summary. Please read the full terms for details.');
                     break;
                 case 'privacy-link':
-                    showNotification('Privacy Policy', '1. Data Collection: We collect personal information when you register, place an order, or subscribe to our newsletter.\n2. Data Usage: Your data is used to process transactions and improve our services.\n3. Data Protection: We implement security measures to protect your information.\n\nThis is a summary. Please read our full policy for details.');
+                    showNotification('Privacy Policy', '<strong>1. Data Collection:</strong> We collect personal information when you register, place an order, or subscribe to our newsletter.\n<strong>2. Data Usage:</strong> Your data is used to process transactions and improve our services.\n<strong>3. Data Protection:</strong> We implement security measures to protect your information.\n\nThis is a summary. Please read our full policy for details.');
                     break;
                 case 'blog-link':
-                    showNotification('Blog', 'Welcome to the Beipoas Blog!\n\nLatest Posts:\n- Top 10 Tech Gadgets for 2025\n- A Guide to Seasonal Fashion Trends\n- Healthy Recipes You Can Make with Our Groceries\n\nStay tuned for more exciting articles!');
+                    showNotification('Blog', 'Welcome to the Beipoas Blog!\n\n<strong>Latest Posts:</strong>\n- Top 10 Tech Gadgets for 2025\n- A Guide to Seasonal Fashion Trends\n- Healthy Recipes You Can Make with Our Groceries\n\nStay tuned for more exciting articles!');
                     break;
                 default:
                     // For category links in footer
@@ -1036,4 +1113,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Save Profile Changes
+    saveProfileBtn.addEventListener('click', function() {
+        if (currentUser) {
+            currentUser.fullName = document.getElementById('full-name').value;
+            currentUser.email = document.getElementById('email').value;
+            currentUser.phone = document.getElementById('phone').value;
+
+            localStorage.setItem('beipoasCurrentUser', JSON.stringify(currentUser));
+            showToast('Profile updated successfully!');
+            closeModal(accountModal);
+        }
+    });
 });

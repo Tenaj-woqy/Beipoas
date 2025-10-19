@@ -639,6 +639,11 @@ nav {
     margin-top: 15px;
 }
 
+.link-danger {
+    color: #e8402a; /* Theme's primary red color */
+    font-weight: bold;
+}
+
 /* Account Modal */
 .account-tabs {
     display: flex;
